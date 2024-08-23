@@ -32,30 +32,24 @@ function decryptCaesar(text, shift) {
 
 // Función para manejar la encriptación al hacer clic en el botón "Encriptar"
 function encrypt() {
-  const inputText = document.getElementById("input-text").value.trim(); // Quita espacios al inicio y final
+  const inputText = document.getElementById("input-text").value.trim(); 
 
-  // Verificar si el textarea está vacío
   if (!inputText) {
-    notyf.error("Tienes que ingresar datos."); // Mostrar error
-    return; // Salir de la función si está vacío
+    notyf.error("Tienes que ingresar datos."); 
+    return; 
   }
 
   const shift = Math.floor(Math.random() * 10) + 1;
   const encryptedText = encryptCaesar(inputText, shift);
 
-  // Mostrar texto encriptado
   document.querySelector(".text").textContent = encryptedText;
   document.getElementById("input-text").value = "";
   document.querySelector(".text").setAttribute("data-shift", shift);
-
-  // Ocultar la sección "no-found"
   document.querySelector(".no-found").style.display = "none";
-
-  // Mostrar el botón de "Copiar"
   document.querySelector(".btn-copy").style.display = "inline-block";
 }
 
-// Función para manejar la desencriptación al hacer clic en el botón "Desencriptar"
+
 function decrypt() {
   const textElement = document.querySelector(".text");
   const encryptedText = textElement.textContent;
@@ -70,7 +64,6 @@ function decrypt() {
   }
 }
 
-// Función para copiar el texto encriptado al portapapeles
 function copyToClipboard() {
   const textContent = document.querySelector(".text").textContent;
   if (textContent) {
@@ -87,7 +80,7 @@ function copyToClipboard() {
   }
 }
 
-// Función para validar la entrada del textarea y permitir solo letras minúsculas sin acento
+
 function validateInput() {
   const textarea = document.getElementById("input-text");
   const validText = textarea.value.toLowerCase().replace(/[^a-z\s]/g, "");
